@@ -3,7 +3,6 @@ import logo from "../../img/logo.png"
 
 const css = {
   'backgroundColor' : '#3B5998',
-  'height': '90px',
   'color': 'white',
 
   'fontFamily': 'Tahoma',
@@ -22,8 +21,8 @@ const logoCss = {
 const header = () => {
   return(
       <div style={css}>
-        <img source={logo} alt="place" style={logoCss}/>
-        <div>
+        <img src={logo} alt="place" style={logoCss} height="60px" width="60px"/>
+        <div style={{"paddingTop":"25px"}}>
           TopTipr
         </div>
       </ div>

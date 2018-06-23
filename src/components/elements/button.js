@@ -4,13 +4,13 @@ import React from 'react'
 const button = (props) => {
 
   const innerCss = {
-    'backgroundColor': '#279B0B',
+    'backgroundColor': '#263142',
     'borderStyle': 'solid',
     'borderWidth': '1px',
     'borderColor': 'white',
-    'height': props.height - 5 + 'px',
-    'width': props.width - 10 + 'px',
-    'lineHeight': props.height - 5 + 'px',
+    'height': props.height + 'px',
+    'width': props.width + 'px',
+    'lineHeight': props.height  + 'px',
 
     'marginLeft': '3px',
 
@@ -18,30 +18,19 @@ const button = (props) => {
     'fontSize': '20px',
 
     'color': 'white',
-    'textAlign': 'center'
+    'textAlign': 'center',
+    'letterSpacing': '5px',
+    'borderRadius': '15px',
+    'cursor': 'pointer'
   }
-  const outerCss = {
-    'paddingTop': '3px',
-
-    'backgroundColor': '#279B0B',
-    'height': props.height + 'px',
-    'width': props.width + 'px',
-
-
-    'justifyContent': 'center',
-    'alignContent': 'center',
-    'flexDirection': 'column'
-  }
-
-  const allStyles = Object.assign({}, outerCss, props.style)
+ 
+  const allStyles = Object.assign({}, innerCss, props.style)
 
   console.log(allStyles)
 
   return (
-    <div style={outerCss}>
-      <div style={innerCss}>
-        {props.text}
-      </div>
+    <div style={innerCss} onClick = {props.onClick}>
+      {props.text}
     </div>
   );
 }

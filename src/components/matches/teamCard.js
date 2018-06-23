@@ -21,15 +21,22 @@ class TeamCard extends Component {
 
   constructor(props) {
     super();
-    this.state = { nrOfGoals: props.goals }
+    this.state = { 
+      nrOfGoals: props.goals,
+      side: props.side,
+      id: props.id
+    }
   }
 
   onChangeHandler(e) {
-    this.setState({ nrOfGoals: e.target.value })
-  }
+    var val = e.target.value
+    this.props.onChange({
+      nrOfGoals: val,
+      side: this.state.side,
+      id: this.state.id
+    })
 
-  getNrOfGoals = () => {
-    return this.state.nrOfGoals
+    this.setState({ nrOfGoals: e.target.value })
   }
 
   render = () => {
@@ -41,4 +48,5 @@ class TeamCard extends Component {
       </div>);
   }
 }
+
 export default TeamCard;

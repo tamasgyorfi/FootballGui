@@ -3,8 +3,6 @@ import { render } from 'react-dom';
 import AppRoutes from './components/routes/appRoutes'
 import Spinner from './components/spinner/spinner'
 import isUserLoggedIn from './components/login/authHandler'
-import Header from './components/panels/header'
-import Button from './components/elements/button'
 
 class App extends Component {
 

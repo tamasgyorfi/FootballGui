@@ -23,12 +23,20 @@ class MatchCard extends Component {
     const home = <TeamCard
       img={this.props.homeTeamImg}
       goals={this.props.homeTeamGoals}
-      name={this.props.homeTeamName} />
+      name={this.props.homeTeamName} 
+      side = "HOME"
+      id = {this.props.id}
+      onChange = {this.props.onChange}
+      />
 
     const away = <TeamCard
       img={this.props.awayTeamImg}
       goals={this.props.awayTeamGoals}
-      name={this.props.awayTeamName} />
+      name={this.props.awayTeamName} 
+      side = "AWAY"
+      id = {this.props.id}
+      onChange = {this.props.onChange}
+      />
 
     return (
       <div style={matchCardStyle}>

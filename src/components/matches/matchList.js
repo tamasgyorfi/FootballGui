@@ -24,527 +24,120 @@ const buttonCss = {
 }
 
 class MatchList extends Component {
-  render(props) {
+
+  constructor(props) {
+
+    super();
+
+    this.state = {
+      matches: [{            
+        homeTeamImg: "https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Manchester_United_FC_crest.svg/296px-Manchester_United_FC_crest.svg.png",
+        awayTeamImg: "https://seeklogo.com/images/R/real-madrid-club-crest-new-logo-03D0B23BC4-seeklogo.com.png",
+        homeTeamName: "Manchester United",
+        awayTeamName: "Real Madrid",
+        homeTeamGoals: "1",
+        awayTeamGoals: "2",
+        date: "2019/03/12 : 13:00"},
+
+      {            
+        homeTeamImg: "https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Manchester_United_FC_crest.svg/296px-Manchester_United_FC_crest.svg.png",
+        awayTeamImg: "https://seeklogo.com/images/R/real-madrid-club-crest-new-logo-03D0B23BC4-seeklogo.com.png",
+        homeTeamName: "Manchester United",
+        awayTeamName: "Real Madrid",
+        homeTeamGoals: "1",
+        awayTeamGoals: "2",
+        date: "2019/03/12 : 13:00"},
+
+      {            
+        homeTeamImg: "https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Manchester_United_FC_crest.svg/296px-Manchester_United_FC_crest.svg.png",
+        awayTeamImg: "https://seeklogo.com/images/R/real-madrid-club-crest-new-logo-03D0B23BC4-seeklogo.com.png",
+        homeTeamName: "Manchester United",
+        awayTeamName: "Real Madrid",
+        homeTeamGoals: "1",
+        awayTeamGoals: "2",
+        date: "2019/03/12 : 13:00"},
+
+      {            
+        homeTeamImg: "https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Manchester_United_FC_crest.svg/296px-Manchester_United_FC_crest.svg.png",
+        awayTeamImg: "https://seeklogo.com/images/R/real-madrid-club-crest-new-logo-03D0B23BC4-seeklogo.com.png",
+        homeTeamName: "Manchester United",
+        awayTeamName: "Real Madrid",
+        homeTeamGoals: "1",
+        awayTeamGoals: "2",
+        date: "2019/03/12 : 13:00"},
+
+      {            
+        homeTeamImg: "https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Manchester_United_FC_crest.svg/296px-Manchester_United_FC_crest.svg.png",
+        awayTeamImg: "https://seeklogo.com/images/R/real-madrid-club-crest-new-logo-03D0B23BC4-seeklogo.com.png",
+        homeTeamName: "Manchester United",
+        awayTeamName: "Real Madrid",
+        homeTeamGoals: "1",
+        awayTeamGoals: "2",
+        date: "2019/03/12 : 13:00"},
+
+      {            
+        homeTeamImg: "https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Manchester_United_FC_crest.svg/296px-Manchester_United_FC_crest.svg.png",
+        awayTeamImg: "https://seeklogo.com/images/R/real-madrid-club-crest-new-logo-03D0B23BC4-seeklogo.com.png",
+        homeTeamName: "Manchester United",
+        awayTeamName: "Real Madrid",
+        homeTeamGoals: "1",
+        awayTeamGoals: "2",
+        date: "2019/03/12 : 13:00"},
+
+      {            
+        homeTeamImg: "https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Manchester_United_FC_crest.svg/296px-Manchester_United_FC_crest.svg.png",
+        awayTeamImg: "https://seeklogo.com/images/R/real-madrid-club-crest-new-logo-03D0B23BC4-seeklogo.com.png",
+        homeTeamName: "Manchester United",
+        awayTeamName: "Real Madrid",
+        homeTeamGoals: "1",
+        awayTeamGoals: "2",
+        date: "2019/03/12 : 13:00"},
+
+      {            
+        homeTeamImg: "https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Manchester_United_FC_crest.svg/296px-Manchester_United_FC_crest.svg.png",
+        awayTeamImg: "https://seeklogo.com/images/R/real-madrid-club-crest-new-logo-03D0B23BC4-seeklogo.com.png",
+        homeTeamName: "Manchester United",
+        awayTeamName: "Real Madrid",
+        homeTeamGoals: "1",
+        awayTeamGoals: "2",
+        date: "2019/03/12 : 13:00"}
+
+        ]
+    }
+  }
+
+  predictionUpdated(payload) {
+    var id = payload.id
+    var oldItem = this.state.matches[id]
+    payload.side === "HOME" ?
+      this.state.matches[id].homeTeamGoals = payload.nrOfGoals :
+      this.state.matches[id].awayTeamGoals = payload.nrOfGoals
+  }
+
+  render() {
+    const matchCards = this.state.matches.map((element, nr) => { return(
+          <MatchCard key = {nr}
+            homeTeamImg = {element.homeTeamImg}
+            awayTeamImg = {element.awayTeamImg}
+            homeTeamName = {element.homeTeamName}
+            awayTeamName = {element.awayTeamName}
+            homeTeamGoals = {element.homeTeamGoals}
+            awayTeamGoals = {element.awayTeamGoals}
+            date = {element.date}
+            onChange = {(payload) => this.predictionUpdated(payload)}
+            id = {nr}
+          />)
+    });
+
     return (
       <div>
         <div style={buttonCss}>
           <Button text='Send' height="50" width="200" style={buttonCss} />
         </div>
-
         <div style={css}>
-
-          <MatchCard
-            homeTeamImg="https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Manchester_United_FC_crest.svg/296px-Manchester_United_FC_crest.svg.png"
-
-            awayTeamImg="https://seeklogo.com/images/R/real-madrid-club-crest-new-logo-03D0B23BC4-seeklogo.com.png"
-
-            homeTeamName="Manchester United"
-            awayTeamName="Real Madrid"
-
-            homeTeamGoals="1"
-            awayTeamGoals="2"
-
-            date="2019/03/12 : 13:00"
-          />
-          <MatchCard
-            homeTeamImg="https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Manchester_United_FC_crest.svg/296px-Manchester_United_FC_crest.svg.png"
-
-            awayTeamImg="https://seeklogo.com/images/R/real-madrid-club-crest-new-logo-03D0B23BC4-seeklogo.com.png"
-
-            homeTeamName="Manchester United"
-            awayTeamName="Real Madrid"
-
-            homeTeamGoals="1"
-            awayTeamGoals="2"
-
-            date="2019/03/12 : 13:00"
-          />
-          <MatchCard
-            homeTeamImg="https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Manchester_United_FC_crest.svg/296px-Manchester_United_FC_crest.svg.png"
-
-            awayTeamImg="https://seeklogo.com/images/R/real-madrid-club-crest-new-logo-03D0B23BC4-seeklogo.com.png"
-
-            homeTeamName="Manchester United"
-            awayTeamName="Real Madrid"
-
-            homeTeamGoals="1"
-            awayTeamGoals="2"
-
-            date="2019/03/12 : 13:00"
-          />
-          <MatchCard
-            homeTeamImg="https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Manchester_United_FC_crest.svg/296px-Manchester_United_FC_crest.svg.png"
-
-            awayTeamImg="https://seeklogo.com/images/R/real-madrid-club-crest-new-logo-03D0B23BC4-seeklogo.com.png"
-
-            homeTeamName="Manchester United"
-            awayTeamName="Real Madrid"
-
-            homeTeamGoals="1"
-            awayTeamGoals="2"
-
-            date="2019/03/12 : 13:00"
-          />
-          <MatchCard
-            homeTeamImg="https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Manchester_United_FC_crest.svg/296px-Manchester_United_FC_crest.svg.png"
-
-            awayTeamImg="https://seeklogo.com/images/R/real-madrid-club-crest-new-logo-03D0B23BC4-seeklogo.com.png"
-
-            homeTeamName="Manchester United"
-            awayTeamName="Real Madrid"
-
-            homeTeamGoals="1"
-            awayTeamGoals="2"
-
-            date="2019/03/12 : 13:00"
-          />
-          <MatchCard
-            homeTeamImg="https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Manchester_United_FC_crest.svg/296px-Manchester_United_FC_crest.svg.png"
-
-            awayTeamImg="https://seeklogo.com/images/R/real-madrid-club-crest-new-logo-03D0B23BC4-seeklogo.com.png"
-
-            homeTeamName="Manchester United"
-            awayTeamName="Real Madrid"
-
-            homeTeamGoals="1"
-            awayTeamGoals="2"
-
-            date="2019/03/12 : 13:00"
-          />
-          <MatchCard
-            homeTeamImg="https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Manchester_United_FC_crest.svg/296px-Manchester_United_FC_crest.svg.png"
-
-            awayTeamImg="https://seeklogo.com/images/R/real-madrid-club-crest-new-logo-03D0B23BC4-seeklogo.com.png"
-
-            homeTeamName="Manchester United"
-            awayTeamName="Real Madrid"
-
-            homeTeamGoals="1"
-            awayTeamGoals="2"
-
-            date="2019/03/12 : 13:00"
-          />
-          <MatchCard
-            homeTeamImg="https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Manchester_United_FC_crest.svg/296px-Manchester_United_FC_crest.svg.png"
-
-            awayTeamImg="https://seeklogo.com/images/R/real-madrid-club-crest-new-logo-03D0B23BC4-seeklogo.com.png"
-
-            homeTeamName="Manchester United"
-            awayTeamName="Real Madrid"
-
-            homeTeamGoals="1"
-            awayTeamGoals="2"
-
-            date="2019/03/12 : 13:00"
-          />
-          <MatchCard
-            homeTeamImg="https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Manchester_United_FC_crest.svg/296px-Manchester_United_FC_crest.svg.png"
-
-            awayTeamImg="https://seeklogo.com/images/R/real-madrid-club-crest-new-logo-03D0B23BC4-seeklogo.com.png"
-
-            homeTeamName="Manchester United"
-            awayTeamName="Real Madrid"
-
-            homeTeamGoals="1"
-            awayTeamGoals="2"
-
-            date="2019/03/12 : 13:00"
-          />
-          <MatchCard
-            homeTeamImg="https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Manchester_United_FC_crest.svg/296px-Manchester_United_FC_crest.svg.png"
-
-            awayTeamImg="https://seeklogo.com/images/R/real-madrid-club-crest-new-logo-03D0B23BC4-seeklogo.com.png"
-
-            homeTeamName="Manchester United"
-            awayTeamName="Real Madrid"
-
-            homeTeamGoals="1"
-            awayTeamGoals="2"
-
-            date="2019/03/12 : 13:00"
-          />
-          <MatchCard
-            homeTeamImg="https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Manchester_United_FC_crest.svg/296px-Manchester_United_FC_crest.svg.png"
-
-            awayTeamImg="https://seeklogo.com/images/R/real-madrid-club-crest-new-logo-03D0B23BC4-seeklogo.com.png"
-
-            homeTeamName="Manchester United"
-            awayTeamName="Real Madrid"
-
-            homeTeamGoals="1"
-            awayTeamGoals="2"
-
-            date="2019/03/12 : 13:00"
-          />
-          <MatchCard
-            homeTeamImg="https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Manchester_United_FC_crest.svg/296px-Manchester_United_FC_crest.svg.png"
-
-            awayTeamImg="https://seeklogo.com/images/R/real-madrid-club-crest-new-logo-03D0B23BC4-seeklogo.com.png"
-
-            homeTeamName="Manchester United"
-            awayTeamName="Real Madrid"
-
-            homeTeamGoals="1"
-            awayTeamGoals="2"
-
-            date="2019/03/12 : 13:00"
-          />
-          <MatchCard
-            homeTeamImg="https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Manchester_United_FC_crest.svg/296px-Manchester_United_FC_crest.svg.png"
-
-            awayTeamImg="https://seeklogo.com/images/R/real-madrid-club-crest-new-logo-03D0B23BC4-seeklogo.com.png"
-
-            homeTeamName="Manchester United"
-            awayTeamName="Real Madrid"
-
-            homeTeamGoals="1"
-            awayTeamGoals="2"
-
-            date="2019/03/12 : 13:00"
-          />
-          <MatchCard
-            homeTeamImg="https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Manchester_United_FC_crest.svg/296px-Manchester_United_FC_crest.svg.png"
-
-            awayTeamImg="https://seeklogo.com/images/R/real-madrid-club-crest-new-logo-03D0B23BC4-seeklogo.com.png"
-
-            homeTeamName="Manchester United"
-            awayTeamName="Real Madrid"
-
-            homeTeamGoals="1"
-            awayTeamGoals="2"
-
-            date="2019/03/12 : 13:00"
-          />
-          <MatchCard
-            homeTeamImg="https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Manchester_United_FC_crest.svg/296px-Manchester_United_FC_crest.svg.png"
-
-            awayTeamImg="https://seeklogo.com/images/R/real-madrid-club-crest-new-logo-03D0B23BC4-seeklogo.com.png"
-
-            homeTeamName="Manchester United"
-            awayTeamName="Real Madrid"
-
-            homeTeamGoals="1"
-            awayTeamGoals="2"
-
-            date="2019/03/12 : 13:00"
-          />
-          <MatchCard
-            homeTeamImg="https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Manchester_United_FC_crest.svg/296px-Manchester_United_FC_crest.svg.png"
-
-            awayTeamImg="https://seeklogo.com/images/R/real-madrid-club-crest-new-logo-03D0B23BC4-seeklogo.com.png"
-
-            homeTeamName="Manchester United"
-            awayTeamName="Real Madrid"
-
-            homeTeamGoals="1"
-            awayTeamGoals="2"
-
-            date="2019/03/12 : 13:00"
-          />
-          <MatchCard
-            homeTeamImg="https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Manchester_United_FC_crest.svg/296px-Manchester_United_FC_crest.svg.png"
-
-            awayTeamImg="https://seeklogo.com/images/R/real-madrid-club-crest-new-logo-03D0B23BC4-seeklogo.com.png"
-
-            homeTeamName="Manchester United"
-            awayTeamName="Real Madrid"
-
-            homeTeamGoals="1"
-            awayTeamGoals="2"
-
-            date="2019/03/12 : 13:00"
-          />
-          <MatchCard
-            homeTeamImg="https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Manchester_United_FC_crest.svg/296px-Manchester_United_FC_crest.svg.png"
-
-            awayTeamImg="https://seeklogo.com/images/R/real-madrid-club-crest-new-logo-03D0B23BC4-seeklogo.com.png"
-
-            homeTeamName="Manchester United"
-            awayTeamName="Real Madrid"
-
-            homeTeamGoals="1"
-            awayTeamGoals="2"
-
-            date="2019/03/12 : 13:00"
-          />
-          <MatchCard
-            homeTeamImg="https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Manchester_United_FC_crest.svg/296px-Manchester_United_FC_crest.svg.png"
-
-            awayTeamImg="https://seeklogo.com/images/R/real-madrid-club-crest-new-logo-03D0B23BC4-seeklogo.com.png"
-
-            homeTeamName="Manchester United"
-            awayTeamName="Real Madrid"
-
-            homeTeamGoals="1"
-            awayTeamGoals="2"
-
-            date="2019/03/12 : 13:00"
-          />
-          <MatchCard
-            homeTeamImg="https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Manchester_United_FC_crest.svg/296px-Manchester_United_FC_crest.svg.png"
-
-            awayTeamImg="https://seeklogo.com/images/R/real-madrid-club-crest-new-logo-03D0B23BC4-seeklogo.com.png"
-
-            homeTeamName="Manchester United"
-            awayTeamName="Real Madrid"
-
-            homeTeamGoals="1"
-            awayTeamGoals="2"
-
-            date="2019/03/12 : 13:00"
-          />
-          <MatchCard
-            homeTeamImg="https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Manchester_United_FC_crest.svg/296px-Manchester_United_FC_crest.svg.png"
-
-            awayTeamImg="https://seeklogo.com/images/R/real-madrid-club-crest-new-logo-03D0B23BC4-seeklogo.com.png"
-
-            homeTeamName="Manchester United"
-            awayTeamName="Real Madrid"
-
-            homeTeamGoals="1"
-            awayTeamGoals="2"
-
-            date="2019/03/12 : 13:00"
-          />
-          <MatchCard
-            homeTeamImg="https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Manchester_United_FC_crest.svg/296px-Manchester_United_FC_crest.svg.png"
-
-            awayTeamImg="https://seeklogo.com/images/R/real-madrid-club-crest-new-logo-03D0B23BC4-seeklogo.com.png"
-
-            homeTeamName="Manchester United"
-            awayTeamName="Real Madrid"
-
-            homeTeamGoals="1"
-            awayTeamGoals="2"
-
-            date="2019/03/12 : 13:00"
-          />
-          <MatchCard
-            homeTeamImg="https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Manchester_United_FC_crest.svg/296px-Manchester_United_FC_crest.svg.png"
-
-            awayTeamImg="https://seeklogo.com/images/R/real-madrid-club-crest-new-logo-03D0B23BC4-seeklogo.com.png"
-
-            homeTeamName="Manchester United"
-            awayTeamName="Real Madrid"
-
-            homeTeamGoals="1"
-            awayTeamGoals="2"
-
-            date="2019/03/12 : 13:00"
-          />
-          <MatchCard
-            homeTeamImg="https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Manchester_United_FC_crest.svg/296px-Manchester_United_FC_crest.svg.png"
-
-            awayTeamImg="https://seeklogo.com/images/R/real-madrid-club-crest-new-logo-03D0B23BC4-seeklogo.com.png"
-
-            homeTeamName="Manchester United"
-            awayTeamName="Real Madrid"
-
-            homeTeamGoals="1"
-            awayTeamGoals="2"
-
-            date="2019/03/12 : 13:00"
-          />
-          <MatchCard
-            homeTeamImg="https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Manchester_United_FC_crest.svg/296px-Manchester_United_FC_crest.svg.png"
-
-            awayTeamImg="https://seeklogo.com/images/R/real-madrid-club-crest-new-logo-03D0B23BC4-seeklogo.com.png"
-
-            homeTeamName="Manchester United"
-            awayTeamName="Real Madrid"
-
-            homeTeamGoals="1"
-            awayTeamGoals="2"
-
-            date="2019/03/12 : 13:00"
-          />
-          <MatchCard
-            homeTeamImg="https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Manchester_United_FC_crest.svg/296px-Manchester_United_FC_crest.svg.png"
-
-            awayTeamImg="https://seeklogo.com/images/R/real-madrid-club-crest-new-logo-03D0B23BC4-seeklogo.com.png"
-
-            homeTeamName="Manchester United"
-            awayTeamName="Real Madrid"
-
-            homeTeamGoals="1"
-            awayTeamGoals="2"
-
-            date="2019/03/12 : 13:00"
-          />
-          <MatchCard
-            homeTeamImg="https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Manchester_United_FC_crest.svg/296px-Manchester_United_FC_crest.svg.png"
-
-            awayTeamImg="https://seeklogo.com/images/R/real-madrid-club-crest-new-logo-03D0B23BC4-seeklogo.com.png"
-
-            homeTeamName="Manchester United"
-            awayTeamName="Real Madrid"
-
-            homeTeamGoals="1"
-            awayTeamGoals="2"
-
-            date="2019/03/12 : 13:00"
-          />
-          <MatchCard
-            homeTeamImg="https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Manchester_United_FC_crest.svg/296px-Manchester_United_FC_crest.svg.png"
-
-            awayTeamImg="https://seeklogo.com/images/R/real-madrid-club-crest-new-logo-03D0B23BC4-seeklogo.com.png"
-
-            homeTeamName="Manchester United"
-            awayTeamName="Real Madrid"
-
-            homeTeamGoals="1"
-            awayTeamGoals="2"
-
-            date="2019/03/12 : 13:00"
-          />
-          <MatchCard
-            homeTeamImg="https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Manchester_United_FC_crest.svg/296px-Manchester_United_FC_crest.svg.png"
-
-            awayTeamImg="https://seeklogo.com/images/R/real-madrid-club-crest-new-logo-03D0B23BC4-seeklogo.com.png"
-
-            homeTeamName="Manchester United"
-            awayTeamName="Real Madrid"
-
-            homeTeamGoals="1"
-            awayTeamGoals="2"
-
-            date="2019/03/12 : 13:00"
-          />
-          <MatchCard
-            homeTeamImg="https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Manchester_United_FC_crest.svg/296px-Manchester_United_FC_crest.svg.png"
-
-            awayTeamImg="https://seeklogo.com/images/R/real-madrid-club-crest-new-logo-03D0B23BC4-seeklogo.com.png"
-
-            homeTeamName="Manchester United"
-            awayTeamName="Real Madrid"
-
-            homeTeamGoals="1"
-            awayTeamGoals="2"
-
-            date="2019/03/12 : 13:00"
-          />
-          <MatchCard
-            homeTeamImg="https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Manchester_United_FC_crest.svg/296px-Manchester_United_FC_crest.svg.png"
-
-            awayTeamImg="https://seeklogo.com/images/R/real-madrid-club-crest-new-logo-03D0B23BC4-seeklogo.com.png"
-
-            homeTeamName="Manchester United"
-            awayTeamName="Real Madrid"
-
-            homeTeamGoals="1"
-            awayTeamGoals="2"
-
-            date="2019/03/12 : 13:00"
-          />
-          <MatchCard
-            homeTeamImg="https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Manchester_United_FC_crest.svg/296px-Manchester_United_FC_crest.svg.png"
-
-            awayTeamImg="https://seeklogo.com/images/R/real-madrid-club-crest-new-logo-03D0B23BC4-seeklogo.com.png"
-
-            homeTeamName="Manchester United"
-            awayTeamName="Real Madrid"
-
-            homeTeamGoals="1"
-            awayTeamGoals="2"
-
-            date="2019/03/12 : 13:00"
-          />
-          <MatchCard
-            homeTeamImg="https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Manchester_United_FC_crest.svg/296px-Manchester_United_FC_crest.svg.png"
-
-            awayTeamImg="https://seeklogo.com/images/R/real-madrid-club-crest-new-logo-03D0B23BC4-seeklogo.com.png"
-
-            homeTeamName="Manchester United"
-            awayTeamName="Real Madrid"
-
-            homeTeamGoals="1"
-            awayTeamGoals="2"
-
-            date="2019/03/12 : 13:00"
-          />
-          <MatchCard
-            homeTeamImg="https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Manchester_United_FC_crest.svg/296px-Manchester_United_FC_crest.svg.png"
-
-            awayTeamImg="https://seeklogo.com/images/R/real-madrid-club-crest-new-logo-03D0B23BC4-seeklogo.com.png"
-
-            homeTeamName="Manchester United"
-            awayTeamName="Real Madrid"
-
-            homeTeamGoals="1"
-            awayTeamGoals="2"
-
-            date="2019/03/12 : 13:00"
-          />
-          <MatchCard
-            homeTeamImg="https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Manchester_United_FC_crest.svg/296px-Manchester_United_FC_crest.svg.png"
-
-            awayTeamImg="https://seeklogo.com/images/R/real-madrid-club-crest-new-logo-03D0B23BC4-seeklogo.com.png"
-
-            homeTeamName="Manchester United"
-            awayTeamName="Real Madrid"
-
-            homeTeamGoals="1"
-            awayTeamGoals="2"
-
-            date="2019/03/12 : 13:00"
-          />
-          <MatchCard
-            homeTeamImg="https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Manchester_United_FC_crest.svg/296px-Manchester_United_FC_crest.svg.png"
-
-            awayTeamImg="https://seeklogo.com/images/R/real-madrid-club-crest-new-logo-03D0B23BC4-seeklogo.com.png"
-
-            homeTeamName="Manchester United"
-            awayTeamName="Real Madrid"
-
-            homeTeamGoals="1"
-            awayTeamGoals="2"
-
-            date="2019/03/12 : 13:00"
-          />
-
-
-          <MatchCard
-            homeTeamImg="https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Manchester_United_FC_crest.svg/296px-Manchester_United_FC_crest.svg.png"
-
-            awayTeamImg="https://seeklogo.com/images/R/real-madrid-club-crest-new-logo-03D0B23BC4-seeklogo.com.png"
-
-            homeTeamName="Manchester United"
-            awayTeamName="Real Madrid"
-
-            homeTeamGoals="1"
-            awayTeamGoals="2"
-
-            date="2019/03/12 : 13:00"
-          />
-          <MatchCard
-            homeTeamImg="https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Manchester_United_FC_crest.svg/296px-Manchester_United_FC_crest.svg.png"
-
-            awayTeamImg="https://seeklogo.com/images/R/real-madrid-club-crest-new-logo-03D0B23BC4-seeklogo.com.png"
-
-            homeTeamName="Manchester City"
-            awayTeamName="Real Madrid"
-
-            homeTeamGoals="1"
-            awayTeamGoals="2"
-
-            date="2019/03/12 : 13:00"
-          />
-          <MatchCard
-            homeTeamImg="https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Manchester_United_FC_crest.svg/296px-Manchester_United_FC_crest.svg.png"
-
-            awayTeamImg="https://seeklogo.com/images/R/real-madrid-club-crest-new-logo-03D0B23BC4-seeklogo.com.png"
-
-            homeTeamName="Manchester United"
-            awayTeamName="Real Madrid"
-
-            homeTeamGoals="1"
-            awayTeamGoals="2"
-
-            date="2019/03/12 : 13:00"
-          />
-
+          {matchCards}
         </div>
       </div>);
   }
 }
-export default MatchList
+export default MatchList;
