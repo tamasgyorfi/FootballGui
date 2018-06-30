@@ -26,8 +26,6 @@ const button = (props) => {
  
   const allStyles = Object.assign({}, innerCss, props.style)
 
-  console.log(allStyles)
-
   return (
     <div style={innerCss} onClick = {props.onClick}>
       {props.text}

@@ -1,7 +1,6 @@
 import React from 'react'
 
 const cardHeaderStyle = {
-  'backgroundColor': '#3B5998',
   'color': 'white',
   'textAlign': 'center',
   'fontFamily': 'Arial, Helvetica, sans-serif',
@@ -10,16 +9,29 @@ const cardHeaderStyle = {
   'backgroundVlip': 'content-box',
   'alignItems': 'center',
   'paddingBottom': '2.5%',
+  'paddingTop': '2px',
   height: '10%'
+}
+
+const enabledCss = {
+    'backgroundColor': '#3B5998'
+}
+
+const disabledCss = {
+    'backgroundColor': '#91969E'
 }
 
 const cardHeader = (props) => {
 
+  var date = new Date(props.date).toLocaleString()
+  var theCss = Object.assign({}, cardHeaderStyle, props.isDisabled ? disabledCss : enabledCss)
+
   return(
-    <div style={cardHeaderStyle}>
-      {props.date}
+    <div style={theCss}>
+      {props.competition} - {date}
     </div>
   );
 }
+
 
 export default cardHeader;

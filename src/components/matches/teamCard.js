@@ -14,6 +14,7 @@ const divStyle = {
   'backgroundColor': '#f0f0f5',
   'width': '150px',
   'marginBottom': '50px',
+  'marginTop': '10px',
   'fontFamily': 'Tahoma',
   'color': 'black'
 }
@@ -44,7 +45,12 @@ class TeamCard extends Component {
       <div style={divStyle}>
         <img src={this.props.img} height="50" width="50" />
         <p>{this.props.name}</p>
-        <input type="number" min="0" max="30" style={textEditStyle} value={this.state.nrOfGoals} onChange={(e) => this.onChangeHandler(e)} />
+        <input type="number" 
+          min="0" max="30" 
+          style={textEditStyle} 
+          value={this.state.nrOfGoals} 
+          onChange={(e) => this.onChangeHandler(e)} 
+          disabled={this.props.isDisabled}/>
       </div>);
   }
 }

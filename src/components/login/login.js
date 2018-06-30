@@ -39,7 +39,6 @@ class Login extends Component {
   }
 
   render() {
-    console.log('a? ' + this.state.toMainPage)
     return (
       this.state.toMainPage ?
         <Redirect to='/' /> :

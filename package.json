@@ -12,7 +12,9 @@
     "react-router": "4.3.1",
     "react-router-dom": "4.3.1",
     "reactrix-sidebar": "0.0.4",
-    "whatwg-fetch": "2.0.4"
+    "whatwg-fetch": "2.0.4",
+    "react-notifications": "1.4.3",
+    "pubnub": "4.21.2"
   },
   "version": "0.1.0",
   "private": true,

@@ -19,6 +19,10 @@ class MatchCard extends Component {
     super();
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.props.isDisabled !== nextProps.isDisabled
+  }
+
   render() {
     const home = <TeamCard
       img={this.props.homeTeamImg}
@@ -27,6 +31,7 @@ class MatchCard extends Component {
       side = "HOME"
       id = {this.props.id}
       onChange = {this.props.onChange}
+      isDisabled={this.props.isDisabled}
       />
 
     const away = <TeamCard
@@ -36,12 +41,13 @@ class MatchCard extends Component {
       side = "AWAY"
       id = {this.props.id}
       onChange = {this.props.onChange}
+      isDisabled={this.props.isDisabled}
       />
 
     return (
       <div style={matchCardStyle}>
 
-        <CardHeader date={this.props.date} />
+        <CardHeader date={this.props.date} competition={this.props.competition} isDisabled={this.props.isDisabled}/>
         {home}
         {away}
 
