@@ -4,8 +4,8 @@ class MessageListener {
 
 	constructor() {
 		this.pubnub = new PubNub({
-            publishKey: <publishKey>,
-            subscribeKey: <subscribeKey>
+            publishKey: 'pub-c-79375f1f-3f08-4b31-8dd8-9e552b044102',
+            subscribeKey: 'sub-c-335f59ce-8586-11e7-a405-4e5e8b8b77ee'
         });
 	}
 
