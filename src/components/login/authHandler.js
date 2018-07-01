@@ -18,8 +18,6 @@ const isUserLoggedIn = (handler) => {
       if (response.status === 'connected') {
         loggedIn = true;
       }
-
-
       handler(loggedIn);
     }.bind(this));
   }.bind(this);

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Sidebar from "reactrix-sidebar";
+import {Link} from 'react-router-dom'
 import "reactrix-sidebar/index.css";
 
 import matches from "../../img/matches.png"
@@ -28,17 +29,17 @@ class MenuBar extends Component {
     return (
       <Sidebar {...options}>
         <nav>
-          <a href="#" style={fontCss}>
+          <Link to="/" style={fontCss}>
             <img src={matches} width="150px" height="150px"/> Matches
-          </a>
+          </Link>
 
           <a href="#" style={fontCss}>
             <img src={league} width="150px" height="150px"/> League
           </a>
           
-          <a href="#" style={fontCss}>
+          <Link to="/friends" style={fontCss}>
             <img src={friends} width="150px" height="150px"/> Friends
-          </a>
+          </Link>
         </nav>
         <div style={css}>
           {this.props.children}

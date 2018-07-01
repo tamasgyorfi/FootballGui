@@ -63,7 +63,6 @@ class MatchList extends Component {
 
       fetchData({userId: userID})
       .then(function(response) {
-        console.log("Response: ", response)
           if (response.ok) {
             return response.json()
           } else {
