@@ -5,6 +5,7 @@ import Spinner from '../spinner/spinner'
 import {NotificationManager} from 'react-notifications';
 import InfoPanel from '../elements/infoPanel'
 import MessageListener from '../../messaging/messaging'
+import Invite from './invite'
 
 import {convertInternalReprsentationToRequest, convertResponseToInternal} from './matchUtils/matchUtils'
 import {fetchData, saveData} from '../../gateway/gateway'
@@ -155,6 +156,7 @@ class MatchList extends Component {
       <div>
         <div style={buttonCss}>
         {sendButton}
+        <Invite />
         </div>
         <div style={css}>
           {matchCards}
