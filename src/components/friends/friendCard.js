@@ -69,7 +69,7 @@ class FriendCard extends Component {
 	render() {
 		const text = this.state.inProgress ? "..." : this.state.isTracked ? "Remove" : "ADD"
 		const btn = this.props.isError ? 
-			<div> Service temorarily down.</div>
+			<div> Service temporarily down.</div>
 			:<div style={buttonCss} onClick={() => this.clickHandler()}>
 				{text}
 			</div>

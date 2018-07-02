@@ -48,12 +48,15 @@ class MatchList extends Component {
 
   componentDidMount() {
     this.messagListener.connect('time_channel', function(msg) {
-      this.setState({ currentDate: new Date(msg.message[1].replace("[UTC]", "")).getTime() })
+      if (msg.message && msg.message[1] ) {
+        this.setState({ currentDate: new Date(msg.message[1].replace("[UTC]", "")).getTime() })
+      }
     }.bind(this))
 
     this.messagListener.getFirstFromHistory('time_channel', function(msg) {
-      console.log("msg", msg.messages[0].entry[1].replace("[UTC]", ""))
-      this.setState({ currentDate: new Date(msg.messages[0].entry[1].replace("[UTC]", "")).getTime() })
+      if (msg.messages && msg.messages[0] && msg.messages[0].entry && msg.messages[0].entry[1]) {
+        this.setState({ currentDate: new Date(msg.messages[0].entry[1].replace("[UTC]", "")).getTime() })
+      }
     }.bind(this))
 
     this.loadData()

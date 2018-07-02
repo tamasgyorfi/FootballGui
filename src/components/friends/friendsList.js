@@ -129,8 +129,9 @@ class FriendsList extends Component {
 				}
 			}.bind(this)).
 			then(function(json){
+				var result = (json && json.payload) ? json.payload : []
 				this.setState({
-					leagueFriends: json.payload,
+					leagueFriends: result,
 					lFriendsDone: true
 				})
 			}.bind(this))
