@@ -9,9 +9,8 @@ class FriendsPage extends Component {
   		return (
     		<div>
       			<Header />
-      			<MenuBar >
-      				<FriendsList />
-      			</MenuBar>
+      			<MenuBar />
+            <FriendsList />
     		</div>
   		);
 	}

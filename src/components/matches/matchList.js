@@ -5,7 +5,7 @@ import Spinner from '../spinner/spinner'
 import {NotificationManager} from 'react-notifications';
 import InfoPanel from '../elements/infoPanel'
 import MessageListener from '../../messaging/messaging'
-import Invite from './invite'
+import Invite from '../panels/invite'
 
 import {convertInternalReprsentationToRequest, convertResponseToInternal} from './matchUtils/matchUtils'
 import {fetchData, saveData} from '../../gateway/gateway'

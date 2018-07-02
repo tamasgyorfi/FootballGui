@@ -12,9 +12,8 @@ class MatchPage extends Component {
   		return (
     		<div>
       			<Header />
-      			<MenuBar >
-      				<MatchList />
-      			</MenuBar>
+      			<MenuBar />
+            <MatchList />
             <NotificationContainer />
     		</div>
   		);

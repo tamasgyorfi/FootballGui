@@ -35,7 +35,8 @@ const buttonCss ={
 	'marginLeft': '20px',
     'cursor': 'pointer',
     'color':'white',
-    'backgroundColor': '#3B5998'
+    'backgroundColor': '#3B5998',
+    'textAlign':'center'
 }
 
 class FriendCard extends Component {

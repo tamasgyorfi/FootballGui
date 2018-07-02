@@ -51,8 +51,8 @@ export function convertInternalReprsentationToRequest(json) {
             matchDate: new Date(element.date).toISOString(),
             homeTeamId: element.homeTeamName,
             awayTeamId: element.awayTeamName,
-            homeTeamGoals: parseInt(element.homeTeamGoals),
-            awayTeamGoals: parseInt(element.awayTeamGoals)
+            homeTeamGoals: element.homeTeamGoals ? parseInt(element.homeTeamGoals) : 0,
+            awayTeamGoals: element.awayTeamGoals ? parseInt(element.awayTeamGoals) : 0
 		};
 	}),
 	token: ""

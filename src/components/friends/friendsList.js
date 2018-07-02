@@ -2,6 +2,7 @@ import React,{Component} from 'react'
 import {getUserFriends, trackUser, untrackUser} from '../../gateway/gateway'
 import FriendCard from './friendCard'
 import Spinner from '../spinner/spinner'
+import Invite from '../panels/invite'
 
 const css = {
   'height': '700px',
@@ -17,6 +18,13 @@ const css = {
   'fontFamily': 'Tahoma'
 }
 
+const rightSideCss = {
+  'float': 'right',
+  'marginBottom': '20px',
+  'marginRight': '30px',
+  'paddingTop': '50px',
+  'paddingLeft': '100px'
+}
 
 class FriendsList extends Component {
 
@@ -64,20 +72,28 @@ class FriendsList extends Component {
 			return(<Spinner />);
 		}
 
-		const friendsList = this.state.friends.map(friend => { return (
-			<FriendCard name={friend.name} 
-				id={friend.id} 
-				picture={friend.picture.data.url} 
-				isTracked={this.isTracked(friend.id)} 
-				updateHandler={(id, tracked,callback)=>this.clickHandler(id, tracked, callback)}
-				key={friend.id}
-				isError = {this.state.userServiceError}
-				/>
-		)});
+		const friendsList = (this.state.fbFriendsDone && this.state.friends.length === 0) ?
+			<div> None of your friends seem to paly TopTipr. No worries, though, you can invite them to get it started! </div>
+			:
+			this.state.friends.map(friend => { return (
+				<FriendCard name={friend.name} 
+					id={friend.id} 
+					picture={friend.picture.data.url} 
+					isTracked={this.isTracked(friend.id)} 
+					updateHandler={(id, tracked,callback)=>this.clickHandler(id, tracked, callback)}
+					key={friend.id}
+					isError = {this.state.userServiceError}
+					/>
+			)})
 
 		return(
-			<div style={css}>
-				{friendsList}
+			<div>
+				<div style={rightSideCss}>
+					<Invite />
+				</div>
+				<div style={css}>
+					{friendsList}
+				</div>
 			</div>
 		);
 	}

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import Sidebar from "reactrix-sidebar";
 import {Link} from 'react-router-dom'
 import "reactrix-sidebar/index.css";
 
@@ -8,44 +7,49 @@ import matches from "../../img/matches.png"
 import league from "../../img/league.png"
 import friends from "../../img/friends.png"
 
-
-const css = {
-  'marginTop': '50px',
-  'textAlign': 'center',
-  'backgroundColor': 'white'
-}
-
-const fontCss = {
-  'fontFamily': 'Tahoma'
-}
+import { NavBar, Nav, NavDropdown, NavItem, MenuItem, Navbar } from 'react-bootstrap';
 
 class MenuBar extends Component {
+  constructor() {
+    super()
+    this.state = {
+      name: "",
+      pic : ""
+    }
+  }
+
+  componentDidMount() {
+    window.FB.api('/me', function(response) {
+      this.setState({
+        name: response.name,
+        pic : "http://graph.facebook.com/"+response.id+"/picture"
+      }) 
+    }.bind(this));
+  }
+
   render(props) {
-    var options = {
-      side: "left",
-      effect: "diverge"
-    };
-
     return (
-      <Sidebar {...options}>
-        <nav>
-          <Link to="/" style={fontCss}>
-            <img src={matches} width="150px" height="150px"/> Matches
-          </Link>
-
-          <a href="#" style={fontCss}>
-            <img src={league} width="150px" height="150px"/> League
-          </a>
-          
-          <Link to="/friends" style={fontCss}>
-            <img src={friends} width="150px" height="150px"/> Friends
-          </Link>
-        </nav>
-        <div style={css}>
-          {this.props.children}
-        </div>
-      </Sidebar>
-      
+      <Navbar inverse collapseOnSelect>
+        <Navbar.Collapse>
+          <Nav>
+            <NavItem eventKey={1} href="#">
+              <img src={matches} width="25px" height="25px"/> <Link to="/">Matches</Link>
+            </NavItem>
+            <NavItem eventKey={2} href="#">
+              <img src={league} width="25px" height="25px"/> League
+            </NavItem>
+            <NavItem eventKey={2} href="#">
+              <img src={friends} width="25px" height="25px"/> <Link to ='/friends'>Friends</Link>
+            </NavItem>
+          </Nav>
+          <Nav pullRight>
+             <img src = {this.state.pic} alt="" style={{"marginRight": "100px"}}/>
+          <Navbar.Brand>
+            {this.state.name}
+          </Navbar.Brand>
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
     );
   }
 }
