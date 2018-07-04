@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import {Link} from 'react-router-dom'
-import "reactrix-sidebar/index.css";
 
 import matches from "../../img/matches.png"
 import league from "../../img/league.png"
